@@ -4,6 +4,42 @@ This project implements two algorithms for solving the Traveling Salesman Proble
 1. Branch and Bound algorithm
 2. Genetic Algorithm
 
+## Example
+Here's an example of optimal route created by genetic algorithm for russian cities with more that 250000 citizens.
+![image](https://github.com/user-attachments/assets/2e1834d6-89a3-44df-9a08-b37a47925f57)
+```bash
+Loading cities from .\data\russian_cities250k.json...
+Loaded 79 cities
+
+Running Genetic Algorithm...
+
+Genetic Algorithm Parameters:
+Population size: 100
+Number of generations: 500
+Mutation probability: 0.02
+Tournament size: 5
+Elitism: enabled
+
+Genetic Algorithm Results:
+Total distance: 420.48 units
+
+Route order:
+1. Нижний Тагил
+2. Пермь
+3. Магнитогорск
+4. Оренбург
+5. Набережные Челны
+6. Киров
+7. Чебоксары
+..
+74. Нижневартовск
+75. Томск
+76. Омск
+77. Сургут
+78. Курган
+79. Челябинск
+```
+
 ## Features
 
 - Solve TSP using either Branch and Bound or Genetic Algorithm
