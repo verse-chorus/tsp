@@ -8,8 +8,6 @@ This project implements two algorithms for solving the Traveling Salesman Proble
 
 - Solve TSP using either Branch and Bound or Genetic Algorithm
 - Input cities via JSON file with coordinates
-- Convert Russian cities data to TSP format
-- Filter cities by population
 - Visualize the resulting route
 - Configurable algorithm parameters
 
@@ -35,30 +33,22 @@ pip install -r requirements.txt
 
 ## Usage
 
-### City Data Conversion
+The main script `main.py` accepts a JSON file containing city coordinates and allows choosing between algorithms.
 
-The project includes a script to convert Russian cities data into the TSP format:
+### Input JSON Format
 
-```bash
-# Convert all cities with population > 500,000
-python convert_cities.py russian-cities.json cities.json
-
-# Convert cities with custom population threshold
-python convert_cities.py russian-cities.json cities.json --min-population 1000000
-
-# Convert top N largest cities
-python convert_cities.py russian-cities.json cities.json --max-cities 20
+Create a JSON file (e.g., `cities.json`) with the following format:
+```json
+{
+    "cities": [
+        {"name": "City1", "x": 10.0, "y": 20.0},
+        {"name": "City2", "x": 30.0, "y": 40.0},
+        ...
+    ]
+}
 ```
 
-The script will:
-1. Read the input JSON file with Russian cities data
-2. Filter cities by population (default > 500,000)
-3. Sort cities by population
-4. Save the result in TSP format
-
-### TSP Solver
-
-The main script `main.py` accepts the converted JSON file and allows choosing between algorithms.
+### Running the Solver
 
 Basic usage with Branch and Bound:
 ```bash
@@ -71,18 +61,6 @@ python main.py --input cities.json --algorithm genetic --population-size 100 --g
 ```
 
 ### Command Line Arguments
-
-#### City Conversion (`convert_cities.py`)
-
-Required arguments:
-- `input_file`: Path to input JSON file with Russian cities data
-- `output_file`: Path to output JSON file in TSP format
-
-Optional arguments:
-- `--min-population`: Minimum population threshold (default: 500000)
-- `--max-cities`: Maximum number of cities to include
-
-#### TSP Solver (`main.py`)
 
 Required arguments:
 - `-i, --input`: Path to JSON file containing city coordinates
@@ -102,16 +80,22 @@ Genetic Algorithm parameters:
 Branch and Bound parameters:
 - `--bnb-time-limit`: Time limit in seconds (default: 60.0)
 
-### Example Workflow
+### Example
 
-1. Convert Russian cities data:
-```bash
-python convert_cities.py russian-cities.json cities.json --min-population 500000
+1. Create a JSON file with city coordinates:
+```json
+{
+    "cities": [
+        {"name": "Moscow", "x": 55.7558, "y": 37.6173},
+        {"name": "Saint Petersburg", "x": 59.9343, "y": 30.3351},
+        {"name": "Novosibirsk", "x": 55.0084, "y": 82.9357}
+    ]
+}
 ```
 
-2. Run the TSP solver:
+2. Run the solver:
 ```bash
-python main.py --input cities.json --algorithm genetic --population-size 200 --generations 1000
+python main.py --input cities.json --algorithm genetic --population-size 50 --generations 200
 ```
 
 3. The script will:
@@ -123,20 +107,14 @@ python main.py --input cities.json --algorithm genetic --population-size 200 --g
 
 ## Output
 
-### City Conversion
-- Console output with:
-  - Number of cities converted
-  - Largest and smallest cities in the dataset
-  - Population statistics
-
-### TSP Solver
-- Console output with:
-  - Algorithm parameters
-  - Time taken
-  - Total distance
-  - Route order
-- Visual plot of the route
-- Optional JSON output with the solution
+The script provides:
+1. Console output with:
+   - Algorithm parameters
+   - Time taken
+   - Total distance
+   - Route order
+2. Visual plot of the route
+3. Optional JSON output with the solution
 
 ## License
 
