@@ -153,5 +153,4 @@ The script provides:
 3. Optional JSON output with the solution
 
 ## License
-
-This project is licensed under the MIT License - see the LICENSE file for details. 
+`russian-cities.json` was copied from [this repo](https://github.com/pensnarik/russian-cities)
