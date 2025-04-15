@@ -148,9 +148,5 @@ This will:
 5. Save the solution to `solution.json`
 
 ## License
+`russian-cities.json` was copied from [this repo](https://github.com/pensnarik/russian-cities/tree/master)
 
-[Your chosen license]
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
