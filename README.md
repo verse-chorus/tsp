@@ -63,6 +63,8 @@ Route order:
 ```bash
 git clone https://github.com/yourusername/tsp.git
 cd tsp
+git clone https://github.com/yourusername/tsp.git
+cd tsp
 ```
 
 2. Install the required packages:
@@ -99,6 +101,7 @@ python main.py --input cities.json
 
 Using Branch and Bound algorithm:
 ```bash
+python main.py --input cities.json --algorithm bnb
 python main.py --input cities.json --algorithm bnb
 ```
 
