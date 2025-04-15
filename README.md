@@ -1,10 +1,9 @@
 # Traveling Salesman Problem Solver
 
-This project implements two algorithms for solving the Traveling Salesman Problem (TSP):
-1. Branch and Bound algorithm
-2. Genetic Algorithm
+A Python implementation of the Traveling Salesman Problem (TSP) solver using two different algorithms: Branch and Bound and Genetic Algorithm. This project provides an efficient way to find optimal or near-optimal routes for visiting multiple cities.
 
 ## Example
+
 Here's an example of optimal route created by genetic algorithm for russian cities with more that 250000 citizens.
 ![image](https://github.com/user-attachments/assets/2e1834d6-89a3-44df-9a08-b37a47925f57)
 ```bash
@@ -42,38 +41,45 @@ Route order:
 
 ## Features
 
-- Solve TSP using either Branch and Bound or Genetic Algorithm
-- Input cities via JSON file with coordinates
-- Visualize the resulting route
+- Two solving algorithms:
+  - Branch and Bound (exact solution)
+  - Genetic Algorithm (heuristic solution)
+- Visual route plotting
+- JSON input/output support
 - Configurable algorithm parameters
+- Efficient distance calculations
 
 ## Requirements
 
 - Python 3.7+
 - Required packages:
-  - numpy
-  - matplotlib
+  - numpy>=1.21.0
+  - matplotlib>=3.4.0
+  - pandas>=1.3.0
 
 ## Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/travel_salesman_problem.git
-cd travel_salesman_problem
+git clone https://github.com/yourusername/tsp.git
+cd tsp
 ```
 
-2. Install required packages:
+2. Install the required packages:
 ```bash
 pip install -r requirements.txt
 ```
 
+3. Install the package:
+```bash
+pip install -e .
+```
+
 ## Usage
 
-The main script `main.py` accepts a JSON file containing city coordinates and allows choosing between algorithms.
+### Input Format
 
-### Input JSON Format
-
-Create a JSON file (e.g., `cities.json`) with the following format:
+The program expects a JSON file containing city coordinates in the following format:
 ```json
 {
     "cities": [
@@ -86,71 +92,62 @@ Create a JSON file (e.g., `cities.json`) with the following format:
 
 ### Running the Solver
 
-Basic usage with Branch and Bound:
+Basic usage with default parameters:
 ```bash
-python main.py --input cities.json --algorithm branch_and_bound
+python main.py --input cities.json
+```
+
+Using Branch and Bound algorithm:
+```bash
+python main.py --input cities.json --algorithm bnb
 ```
 
 Using Genetic Algorithm with custom parameters:
 ```bash
-python main.py --input cities.json --algorithm genetic --population-size 100 --generations 500
+python main.py --input cities.json --algorithm genetic --population-size 100 --generations 500 --mutation-prob 0.02
 ```
 
 ### Command Line Arguments
 
-Required arguments:
-- `-i, --input`: Path to JSON file containing city coordinates
-
-Optional arguments:
-- `-a, --algorithm`: Algorithm to use (`branch_and_bound` or `genetic`, default: `branch_and_bound`)
-- `-o, --output`: Path to save the solution as JSON
+- `-i, --input`: Path to JSON file containing city coordinates (required)
+- `-a, --algorithm`: Algorithm to use ('bnb' or 'genetic', default: 'genetic')
+- `-p, --population-size`: Population size for genetic algorithm (default: 100)
+- `-g, --generations`: Number of generations for genetic algorithm (default: 500)
+- `-m, --mutation-prob`: Mutation probability (0.0 to 1.0, default: 0.02)
+- `-t, --tournament-size`: Tournament size for selection (default: 5)
+- `--no-elitism`: Disable elitism in genetic algorithm
+- `--bnb-time-limit`: Time limit in seconds for branch and bound (default: 60.0)
 - `--no-plot`: Disable route visualization
-
-Genetic Algorithm parameters:
-- `-p, --population-size`: Size of the population (default: 100)
-- `-g, --generations`: Number of generations (default: 500)
-- `-m, --mutation-prob`: Probability of mutation (default: 0.02)
-- `-t, --tournament-size`: Size of tournament selection (default: 5)
-- `--no-elitism`: Disable elitism (enabled by default)
-
-Branch and Bound parameters:
-- `--bnb-time-limit`: Time limit in seconds (default: 60.0)
-
-### Example
-
-1. Create a JSON file with city coordinates:
-```json
-{
-    "cities": [
-        {"name": "Moscow", "x": 55.7558, "y": 37.6173},
-        {"name": "Saint Petersburg", "x": 59.9343, "y": 30.3351},
-        {"name": "Novosibirsk", "x": 55.0084, "y": 82.9357}
-    ]
-}
-```
-
-2. Run the solver:
-```bash
-python main.py --input cities.json --algorithm genetic --population-size 50 --generations 200
-```
-
-3. The script will:
-   - Load the cities from the JSON file
-   - Run the selected algorithm
-   - Display the results
-   - Show a visualization of the route
-   - Save the solution to a JSON file if requested
+- `-o, --output`: Path to save the solution as JSON
 
 ## Output
 
-The script provides:
+The program provides:
 1. Console output with:
    - Algorithm parameters
-   - Time taken
-   - Total distance
+   - Total distance of the route
+   - Time taken (for Branch and Bound)
    - Route order
-2. Visual plot of the route
-3. Optional JSON output with the solution
+2. Visual plot of the route (unless disabled)
+3. JSON file with the solution (if output path is specified)
+
+## Example
+
+```bash
+python main.py --input data/cities.json --algorithm genetic --population-size 200 --generations 1000 --mutation-prob 0.01 --output solution.json
+```
+
+This will:
+1. Load cities from `data/cities.json`
+2. Run the genetic algorithm with the specified parameters
+3. Display the results in the console
+4. Show a plot of the route
+5. Save the solution to `solution.json`
 
 ## License
-`russian-cities.json` was copied from [this repo](https://github.com/pensnarik/russian-cities)
+
+[Your chosen license]
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
