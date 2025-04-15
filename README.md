@@ -102,7 +102,7 @@ Required arguments:
 - `-i, --input`: Path to JSON file containing city coordinates
 
 Optional arguments:
-- `-a, --algorithm`: Algorithm to use (`bnb` or `genetic`, default: `bnb`)
+- `-a, --algorithm`: Algorithm to use (`bnb` or `genetic`, default: `genetic`)
 - `-o, --output`: Path to save the solution as JSON
 - `--no-plot`: Disable route visualization
 
