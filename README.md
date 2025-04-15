@@ -51,15 +51,15 @@ Route order:
 
 - Python 3.7+
 - Required packages:
-  - numpy
-  - matplotlib
+  - `numpy`
+  - `matplotlib`
 
 ## Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/travel_salesman_problem.git
-cd travel_salesman_problem
+git clone https://github.com/yourusername/tsp.git
+cd tsp
 ```
 
 2. Install required packages:
@@ -88,7 +88,7 @@ Create a JSON file (e.g., `cities.json`) with the following format:
 
 Basic usage with Branch and Bound:
 ```bash
-python main.py --input cities.json --algorithm branch_and_bound
+python main.py --input cities.json --algorithm bnb
 ```
 
 Using Genetic Algorithm with custom parameters:
@@ -102,7 +102,7 @@ Required arguments:
 - `-i, --input`: Path to JSON file containing city coordinates
 
 Optional arguments:
-- `-a, --algorithm`: Algorithm to use (`branch_and_bound` or `genetic`, default: `branch_and_bound`)
+- `-a, --algorithm`: Algorithm to use (`bnb` or `genetic`, default: `bnb`)
 - `-o, --output`: Path to save the solution as JSON
 - `--no-plot`: Disable route visualization
 
