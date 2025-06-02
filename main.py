@@ -12,7 +12,7 @@ Usage:
 import json
 import argparse
 from typing import List, Dict
-from tsp import City, GeneticAlgorithm, BranchAndBound, plot_route
+from src import City, GeneticAlgorithm, BranchAndBound, plot_route, plot_route_on_globe
 
 def load_cities_from_json(json_file: str) -> List[City]:
     """
@@ -207,6 +207,7 @@ def main():
     # Plot route if not disabled
     if not args.no_plot:
         plot_route(route, title=f"{args.algorithm.title()} Solution")
+        plot_route_on_globe(route, "Маршрут по городам России")
 
 if __name__ == "__main__":
     main() 

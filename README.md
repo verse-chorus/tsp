@@ -2,6 +2,17 @@
 
 A Python implementation of the Traveling Salesman Problem (TSP) solver using two different algorithms: Branch and Bound and Genetic Algorithm. This project provides an efficient way to find optimal or near-optimal routes for visiting multiple cities.
 
+## Installation
+
+```bash
+git clone https://github.com/yourusername/tsp.git
+conda create -name <env_name>
+conda init
+conda activate <env_name>
+pip install -r requirements.txt
+cd ./tsp/src
+```
+
 ## Example
 
 Here's an example of optimal route created by genetic algorithm for russian cities with more that 250000 citizens.
@@ -53,30 +64,12 @@ Route order:
 
 - Python 3.7+
 - Required packages:
-  - numpy>=1.21.0
-  - matplotlib>=3.4.0
-  - pandas>=1.3.0
+  - numpy==1.26.4
+  - matplotlib==3.4.0
+  - pandas==1.3.0
 
-## Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/tsp.git
-cd tsp
-```
-
-2. Install the required packages:
-```bash
-pip install -r requirements.txt
-```
-
-3. Install the package:
-```bash
-pip install -e .
-```
 
 ## Usage
-
 ### Input Format
 
 The program expects a JSON file containing city coordinates in the following format:
@@ -97,14 +90,21 @@ Basic usage with default parameters:
 python main.py --input cities.json
 ```
 
-Using Branch and Bound algorithm:
+Using **Branch and Bound** algorithm:
 ```bash
-python main.py --input cities.json --algorithm bnb
+python main.py \
+--input cities.json \
+--algorithm bnb
 ```
 
-Using Genetic Algorithm with custom parameters:
+Using **Genetic Algorithm** with custom parameters:
 ```bash
-python main.py --input cities.json --algorithm genetic --population-size 100 --generations 500 --mutation-prob 0.02
+python main.py \
+--input cities.json \
+--algorithm genetic \
+--population-size 100 \
+--generations 500 \
+--mutation-prob 0.02
 ```
 
 ### Command Line Arguments
@@ -134,7 +134,13 @@ The program provides:
 ## Example
 
 ```bash
-python main.py --input data/cities.json --algorithm genetic --population-size 200 --generations 1000 --mutation-prob 0.01 --output solution.json
+python main.py \
+--input data/cities.json \
+--algorithm genetic \
+--population-size 200 \
+--generations 1000 \
+--mutation-prob 0.01 \
+--output solution.json
 ```
 
 This will:
@@ -146,4 +152,3 @@ This will:
 
 ## License
 `russian-cities.json` was copied from [this repo](https://github.com/pensnarik/russian-cities/tree/master)
-
